@@ -1,0 +1,22 @@
+﻿@model EmpDepManage.Models.Department
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new {@class="text-danger"})
+    <div>
+        @Html.LabelFor(a => a.DepName)
+        @Html.TextBoxFor(a => a.DepName)
+        @Html.ValidationMessageFor(a=>a.DepName, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <div>
+        <button type="submit">Save</button>
+    </div>
+    <br />
+}
+@Html.ActionLink("Back to list", "Index")

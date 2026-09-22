@@ -1,0 +1,49 @@
+﻿@model IEnumerable<EmpDepManage.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Search", "Employee", FormMethod.Post))
+{
+    @Html.ValidationSummary(true,"", new { @class = "text-danger" })
+    <div>
+        @Html.TextBox("search", "", new { PlaceHolder = "Search by name/email" })
+        @Html.ValidationMessage("search", "", new {@class="text-danger"})
+    </div>
+    <button type="submit">Search</button>
+    @Html.ActionLink("Clear", "Index", "Employee")
+}
+@Html.ActionLink("Create", "Create")
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Department</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Salary</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EmpId</td>
+                <td>@item.Department.DepName</td>
+                <td>@item.EmpName</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.Salary</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmpId })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmpId })
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

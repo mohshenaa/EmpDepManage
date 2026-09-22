@@ -1,0 +1,22 @@
+﻿@model EmpDepManage.Models.Employee
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+@using (Html.BeginForm("DeleteConfirm", "Employee", FormMethod.Post))
+{@Html.HiddenFor(a => a.EmpId)
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<p>Are you want to delete this Employee ?</p>
+<div>@Model.EmpId</div>
+<div>@Model.EmpName</div>
+<div>@Model.Email</div>
+<div>@Model.PhoneNumber</div>
+<div>@Model.Salary</div>
+<div>@Model.Department.DepName</div>
+<div>
+    <button type="submit">Delete</button>
+    @Html.ActionLink("Back to list", "Index", new { id = Model.EmpId })
+</div>
+}
+

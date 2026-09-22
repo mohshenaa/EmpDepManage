@@ -1,0 +1,33 @@
+﻿@model IEnumerable<EmpDepManage.Models.Department>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("Create", "Create")
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Department</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DepId</td>
+                <td>@item.DepName</td>
+
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DepId })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DepId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

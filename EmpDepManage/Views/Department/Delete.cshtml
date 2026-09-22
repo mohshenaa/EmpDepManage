@@ -1,0 +1,20 @@
+﻿@model EmpDepManage.Models.Department
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+@using (Html.BeginForm("DeleteConfirm", "Department", FormMethod.Post))
+{@Html.HiddenFor(a => a.DepId)
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<p>Are you want to delete this Department ?</p>
+<div>@Model.DepId</div>
+<div>@Model.DepName</div>
+
+<div>
+    <button type="submit">Delete</button>
+    @Html.ActionLink("Back to list", "Index", new { id = Model.DepId })
+</div>
+}
+

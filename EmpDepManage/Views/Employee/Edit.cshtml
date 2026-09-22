@@ -1,0 +1,46 @@
+﻿@model EmpDepManage.Models.Employee
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(a => a.EmpId)
+    <div>
+        @Html.LabelFor(a => a.EmpName)
+        @Html.TextBoxFor(a => a.EmpName)
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(a => a.Email)
+        @Html.TextBoxFor(a => a.Email)
+        @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(a => a.PhoneNumber)
+        @Html.TextBoxFor(a => a.PhoneNumber)
+        @Html.ValidationMessageFor(a => a.PhoneNumber, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(a => a.Salary)
+        @Html.TextBoxFor(a => a.Salary)
+        @Html.ValidationMessageFor(a => a.Salary, "", new { @class = "text-danger" })
+
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(a => a.Department)
+        @Html.DropDownList("DepId", (SelectList)ViewBag.department)
+    </div>
+    <br />
+    <div>
+        <button type="submit">Update</button>
+    </div>
+    <br />
+}
+@Html.ActionLink("Back to list", "Index")
